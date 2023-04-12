@@ -32,9 +32,14 @@
         $result_cnt = update_board_info_no( $arr_info );
 
         // select
-        $result_info = select_board_info_no( $arr_post["board_no"] );
+        // $result_info = select_board_info_no( $arr_post["board_no"] );
+
+        header( "Location: board_detail.php?board_no=".$arr_post["board_no"] );
+        exit(); // header함수쪽에서 redirect했기 때문에 이후의 소스코드는 실행할 필요가 없다.
+    
     }
 
+       
 ?>
 
 <!DOCTYPE html>
@@ -43,19 +48,21 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/css.css">
+    <link rel="stylesheet" href="css/board.css">
+
     <title>게시판</title>
     <script>
     function resize(obj) {
         obj.style.height = "1px";
-        obj.style.height = (12+obj.scrollHeight)+"px";
+        obj.style.height = (15+obj.scrollHeight)+"px";
     }
+
 </script>
 
 </head>
 <body>
     <a href = 'board_list.php?page_num=1'><h1 id='h1_atag'>Notice Board</h1></a>
-        <form method="post" action="board_update.php">
+    <form class="form_contents" method="post" action="board_update.php">
             <label for='bno'>게시글 번호  </label>
             <input type='text' id='bno' name='board_no' value='<?php echo $result_info["board_no"] ?>' readonly>
         <br>
@@ -63,12 +70,19 @@
             <input type='text' id='title' name='board_title' value='<?php echo $result_info["board_title"] ?>'>
         <br>
             <label for='contents'>게시글 내용  </label>
-            <textarea class='autosize' id='contents' name='board_contents' onkeyup="resize(this)"
+            <textarea class='autosize' id='contents' name='board_contents' onkeydown="resize(this)" onkeyup="resize(this)"
             placeholder='내용을 입력해 주세요.' ><?php echo $result_info["board_contents"] ?></textarea>
         <br>
-    <button type='submit' class='fix_button' >수정</button>
-    
+            <button type='submit' class="fix_button" >수정</button>
+
+            <a href="board_detail.php?board_no=<?php echo $result_info["board_no"] ?>" >
+            <button type='botton' class="to_list_button">
+                리스트로<br>돌아가기
+            </button>
+            </a>
     </form>
 
 </body>
 </html>
+
+

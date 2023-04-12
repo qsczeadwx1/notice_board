@@ -109,6 +109,7 @@ function select_board_info_no( &$param_no )
 	    ." board_no "
 	    ." ,board_title "
 	    ." ,board_contents "
+        ." ,board_write_date " // 4/12 추가
         ." FROM "
         ." notice_board_info "
         ." WHERE "
@@ -172,6 +173,7 @@ function update_board_info_no( &$param_arr )
         } 
         catch ( Exception $e ) 
         {
+            $conn->rollback();
             return $e->getMessage();
         }
         finally
@@ -181,6 +183,47 @@ function update_board_info_no( &$param_arr )
         
         return $result_cnt;
 }
+
+function delete_board_info_no( &$param_no )
+{
+    $sql = 
+    " UPDATE "
+    ." notice_board_info "
+    ." SET "
+    ." board_del_flg = '1' "
+    ." ,board_del_date = NOW() "
+    ." WHERE "
+    ." board_no = :board_no "
+    ;
+
+    $arr_prepare = 
+    array(
+        ":board_no" => $param_no
+    );
+
+    $conn = null;
+    try 
+    {
+        db_conn( $conn ); // PDO object set
+        $conn->beginTransaction(); // 트랜잭션 시작
+        $stmt = $conn->prepare( $sql ); // statement object set
+        $stmt->execute( $arr_prepare ); // DB request
+        $result_cnt = $stmt->rowCount(); // query 적용 recode 갯수
+        $conn->commit();
+    } 
+    catch ( Exception $e ) 
+    {
+        $conn->rollback();
+        return $e->getMessage();
+    }
+    finally
+    {
+        $conn = null; // PDO 파기
+    }
+    
+    return $result_cnt;
+}
+
 
 // TODO : test Start
 // $arr = 

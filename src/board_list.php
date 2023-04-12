@@ -42,7 +42,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <title>게시판</title>
-    <link rel="stylesheet" href="css/css.css">
+    <link rel="stylesheet" href="css/board.css">
 </head>
 <body>
     <a href = 'board_list.php?page_num=1'><h1 id='h1_atag'>Notice Board</h1></a>
@@ -62,7 +62,7 @@
             ?>
                 <tr>
                     <td class='board_no'><?php echo $record["board_no"] ?></td>
-                    <td class='board_tit'><div class='a_container'><a href='board_update.php?board_no=<?php echo $record["board_no"] ?>' id='board_a'><?php echo $record["board_title"] ?></a></div></td>
+                    <td class='board_tit'><div class='a_container'><a href='board_detail.php?board_no=<?php echo $record["board_no"] ?>' id='board_a'><?php echo $record["board_title"] ?></a></div></td>
                     <td class='write_date'><?php echo $record["board_write_date"] ?></td>
                 <tr>
             <?php
