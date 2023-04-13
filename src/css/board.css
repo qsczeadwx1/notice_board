@@ -61,7 +61,7 @@ table {
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2212@1.0/KIMM_Bold.woff2') format('woff2');
     font-style: normal;
 }
-span{
+.start_end{
     font-size: 5px;
     display:inline-block;
     font-family: 'KIMM_Bold';
@@ -179,6 +179,16 @@ p{
     background-image:url(background1.png);
 }
 #contents:focus, #bno:focus, #title:focus
-,button:hover{
+, button:hover{
     background-image:url(background1.png);
+}
+
+.table_b{
+    width:30px;
+    margin:5px;
+    color: rgb(100, 75, 75);
+    font-family: 'KIMM_Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2212@1.0/KIMM_Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
 }

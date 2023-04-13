@@ -1,6 +1,7 @@
 <?php
     define( "SRC_ROOT", $_SERVER["DOCUMENT_ROOT"]."/src/" );
     define( "URL_DB", SRC_ROOT."common/db_common.php" );
+    define( "URL_HEADER", SRC_ROOT."board_header.php" );
     include_once( URL_DB );
 
     // request method를 획득
@@ -61,13 +62,13 @@
 
 </head>
 <body>
-    <a href = 'board_list.php?page_num=1'><h1 id='h1_atag'>Notice Board</h1></a>
+    <?php include_once( URL_HEADER ); ?>
     <form class="form_contents" method="post" action="board_update.php">
             <label for='bno'>게시글 번호  </label>
             <input type='text' id='bno' name='board_no' value='<?php echo $result_info["board_no"] ?>' readonly>
         <br>
             <label for='title'>게시글 제목  </label>
-            <input type='text' id='title' name='board_title' value='<?php echo $result_info["board_title"] ?>'>
+            <input type='text' id='title' name='board_title' required value='<?php echo $result_info["board_title"] ?>'>
         <br>
             <label for='contents'>게시글 내용  </label>
             <textarea class='autosize' id='contents' name='board_contents' onkeydown="resize(this)" onkeyup="resize(this)"
@@ -75,13 +76,13 @@
         <br>
             <button type='submit' class="fix_button" >수정</button>
 
-            <a href="board_detail.php?board_no=<?php echo $result_info["board_no"] ?>" >
             <button type='botton' class="to_list_button">
-                리스트로<br>돌아가기
+            <a href="board_detail.php?board_no=<?php echo $result_info["board_no"] ?>" >
+                돌아가기
+                </a>
             </button>
-            </a>
+            
     </form>
-
 </body>
 </html>
 

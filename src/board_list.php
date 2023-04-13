@@ -14,7 +14,7 @@
 
     $limit_num = 7;
 
-    $offset = ( intval($page_num) - 1 ) * $limit_num; 
+    $offset = ( $page_num - 1 ) * $limit_num; 
     // 게시판 정보 테이블 전체 카운트 획득
     $result_cnt = select_board_info_cnt();
 
@@ -43,6 +43,13 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <title>게시판</title>
     <link rel="stylesheet" href="css/board.css">
+    <style>
+        .table_<?php echo $page_num ?>{
+            border: 1px solid black;
+        color: rgb(102, 102, 102);
+        background-color: rgb(226, 211, 211);
+        }
+    </style>
 </head>
 <body>
     <a href = 'board_list.php?page_num=1'><h1 id='h1_atag'>Notice Board</h1></a>
@@ -72,37 +79,67 @@
     </table>
     </div>
     <div class="a_tag">
-        <a href = 'board_list.php?page_num=1' class='table_a'><span>처음으로</span></a>
+        <a href = 'board_list.php?page_num=1' class='table_a'><span class='start_end'>처음으로</span></a>
         <?php
             if( $page_num != 1 )
             {
-                $previous_page = intval($page_num) - 1;
+                $previous_page = $page_num - 1;
         ?>
         <a href='board_list.php?page_num=<?php echo $previous_page ?> ' class='table_a'>◀</a>
         <?php
             }
+            elseif( $page_num = 1)
+            {
+        ?>
+                <span class='table_b'>◀</span>
+        <?php
+            }
         ?>
     <?php
-        for($i = 1; $i <= $max_page_num; $i++)
+        if($page_num < 3)
         {
+            for($i = 1; $i <= 5; $i++)
+            {
     ?>
-            <a href='board_list.php?page_num=<?php echo $i ?>' class='table_a'><?php echo $i; ?></a>
+                <a href='board_list.php?page_num=<?php echo $i ?>' class='table_a table_<?php echo $i; ?>'><?php echo $i; ?></a>
     <?php
+            }
         }
+        elseif($page_num > $max_page_num - 2)
+        {
+            for($i = $max_page_num - 4; $i <= $max_page_num; $i++)
+            {
     ?>
+                <a href='board_list.php?page_num=<?php echo $i ?>' class='table_a table_<?php echo $i; ?>'><?php echo $i; ?></a>
     <?php
+            }
+        }
+        elseif($page_num > 3 || $page_num <= $max_page_num - 2 )
+        {
+            for($i = $page_num -2; $i <= $page_num + 2; $i++)
+            {
+    ?>
+                <a href='board_list.php?page_num=<?php echo $i ?>' class='table_a table_<?php echo $i; ?>'><?php echo $i; ?></a>
+    <?php
+            }
+        }
         if( $page_num != $max_page_num )
         {
-            $next_page = intval($page_num) + 1;
+            $next_page = $page_num + 1;
         
     ?>
     <a href='board_list.php?page_num=<?php echo $next_page ?>' class='table_a'>▶</a>
     <?php
         }
+        elseif( $page_num = $max_page_num )
+        {
     ?>
-        <a href = 'board_list.php?page_num=<?php echo $max_page_num ?>' class='table_a'><span>끝으로</span></a>
+            <span class='table_b'>▶</span>
+    <?php
+        }
+    ?>
+        <a href = 'board_list.php?page_num=<?php echo $max_page_num ?>' class='table_a'><span class='start_end'>끝으로</span></a>
     </div>
+    <a href="board_insert.php"><button type="button">게시글 작성</button></a>
 </body>
 </html>
-
-<!-- class="btn btn-primary" 부트스트랩 버튼 -->

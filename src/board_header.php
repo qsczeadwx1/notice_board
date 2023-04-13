@@ -1,0 +1,1 @@
+<a href = 'board_list.php'><h1 id='h1_atag'>Notice Board</h1></a>

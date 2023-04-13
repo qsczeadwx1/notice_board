@@ -19,7 +19,7 @@ function db_conn( &$param_conn )
     {
         $param_conn = new PDO( $dns, $user, $pass, $pdo_option );
     } 
-    catch( \Throwable $e ) 
+    catch( Exception $e ) 
     {
         $param_conn = null;
         throw new Exception( $e->getMessage() );
@@ -224,6 +224,50 @@ function delete_board_info_no( &$param_no )
     return $result_cnt;
 }
 
+function insert_board_info( &$param_arr )
+{
+    $sql = 
+        " INSERT INTO "
+        ." notice_board_info( "
+        ." board_title "
+        ." ,board_contents "
+        ." ,board_write_date "
+        ." ) "
+        ." VALUES( "
+        ." :board_title "
+        ." ,:board_contents "
+        ." ,NOW() "
+        ." ) "
+        ;
+
+    $arr_prepare =
+        array(
+            ":board_title" => $param_arr["board_title"]
+            ,":board_contents" => $param_arr["board_contents"]
+        );
+
+    $conn = null;
+    try 
+    {
+        db_conn( $conn ); // PDO object set
+        $conn->beginTransaction(); // 트랜잭션 시작
+        $stmt = $conn->prepare( $sql ); // statement object set
+        $stmt->execute( $arr_prepare ); // DB request
+        $result_cnt = $stmt->rowCount(); // query 적용 record 갯수
+        $conn->commit();
+    } 
+    catch ( Exception $e ) 
+    {
+        $conn->rollback();
+        return $e->getMessage();
+    }
+    finally
+    {
+        $conn = null; // PDO 파기
+    }
+    
+    return $result_cnt;
+}
 
 // TODO : test Start
 // $arr = 
@@ -236,7 +280,6 @@ function delete_board_info_no( &$param_no )
 
 // print_r( $result );
 // TODO : test End
-
 
 
 

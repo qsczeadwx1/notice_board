@@ -1,6 +1,7 @@
 <?php
     define( "SRC_ROOT", $_SERVER["DOCUMENT_ROOT"]."/src/" );
     define( "URL_DB", SRC_ROOT."common/db_common.php" );
+    define( "URL_HEADER", SRC_ROOT."board_header.php" );
     include_once( URL_DB );
 
 // request parameter획득(GET)
@@ -38,7 +39,7 @@ $result_info = select_board_info_no( $arr_get["board_no"] )
     </script> -->
 </head>
 <body>
-    <a href = 'board_list.php?page_num=1'><h1 id='h1_atag'>Notice Board</h1></a>
+    <?php include_once( URL_HEADER ); ?>
     <form class="form_detail" >
     <div>
         <p>게시글 번호 : <?php echo $result_info["board_no"]?></p>
