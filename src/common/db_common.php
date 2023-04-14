@@ -68,6 +68,7 @@ function select_board_info_paging( &$param_arr )
     return $result;
 }
 
+
 function select_board_info_cnt()
 {
     $sql =
@@ -100,7 +101,7 @@ function select_board_info_cnt()
     return $result;
 
 }
-
+var_dump(select_board_info_cnt());
 
 function select_board_info_no( &$param_no )
 {
@@ -109,7 +110,7 @@ function select_board_info_no( &$param_no )
 	    ." board_no "
 	    ." ,board_title "
 	    ." ,board_contents "
-        ." ,board_write_date " // 4/12 추가
+        ." ,board_write_date "
         ." FROM "
         ." notice_board_info "
         ." WHERE "
@@ -204,11 +205,11 @@ function delete_board_info_no( &$param_no )
     $conn = null;
     try 
     {
-        db_conn( $conn ); // PDO object set
-        $conn->beginTransaction(); // 트랜잭션 시작
-        $stmt = $conn->prepare( $sql ); // statement object set
-        $stmt->execute( $arr_prepare ); // DB request
-        $result_cnt = $stmt->rowCount(); // query 적용 recode 갯수
+        db_conn( $conn ); 
+        $conn->beginTransaction(); 
+        $stmt = $conn->prepare( $sql ); 
+        $stmt->execute( $arr_prepare ); 
+        $result_cnt = $stmt->rowCount(); 
         $conn->commit();
     } 
     catch ( Exception $e ) 
@@ -218,7 +219,7 @@ function delete_board_info_no( &$param_no )
     }
     finally
     {
-        $conn = null; // PDO 파기
+        $conn = null; 
     }
     
     return $result_cnt;
@@ -249,11 +250,11 @@ function insert_board_info( &$param_arr )
     $conn = null;
     try 
     {
-        db_conn( $conn ); // PDO object set
-        $conn->beginTransaction(); // 트랜잭션 시작
-        $stmt = $conn->prepare( $sql ); // statement object set
-        $stmt->execute( $arr_prepare ); // DB request
-        $result_cnt = $stmt->rowCount(); // query 적용 record 갯수
+        db_conn( $conn ); 
+        $conn->beginTransaction(); 
+        $stmt = $conn->prepare( $sql ); 
+        $stmt->execute( $arr_prepare ); 
+        $result_cnt = $stmt->rowCount();
         $conn->commit();
     } 
     catch ( Exception $e ) 
@@ -263,24 +264,11 @@ function insert_board_info( &$param_arr )
     }
     finally
     {
-        $conn = null; // PDO 파기
+        $conn = null; 
     }
     
     return $result_cnt;
 }
-
-// TODO : test Start
-// $arr = 
-//     array(
-//         "limit_num"  => 5
-//         ,"offset"    => 0
-//     );
-
-// $result = select_board_info_paging( $arr );
-
-// print_r( $result );
-// TODO : test End
-
 
 
 ?>

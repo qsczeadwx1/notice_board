@@ -21,9 +21,7 @@
             exit();
     }
     
-
 ?>
-
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -51,12 +49,12 @@
             placeholder='내용을 입력해 주세요.' ></textarea>
         <br>
             <button type='submit' class="fix_button" >작성</button>
+            
             <button type='botton' class="to_list_button">
             <a href="board_list.php">
                 돌아가기
             </a>
             </button>
-            
     </form>
 </body>
 </html>

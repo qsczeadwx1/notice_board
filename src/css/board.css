@@ -1,3 +1,10 @@
+@font-face{
+    font-family: 'KIMM_Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2212@1.0/KIMM_Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+
 html{
     margin:0;
     padding:0;
@@ -18,13 +25,10 @@ a{
     text-align:center;
 }
 .table_a{
+    font-family: 'KIMM_Bold';
     width:30px;
     margin:5px;
     color: rgb(100, 75, 75);
-    font-family: 'KIMM_Bold';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2212@1.0/KIMM_Bold.woff2') format('woff2');
-    font-weight: 700;
-    font-style: normal;
 }
 .table_a:hover{
     border: 1px solid black;
@@ -58,15 +62,11 @@ body{
 }
 table {
     font-family: 'KIMM_Bold';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2212@1.0/KIMM_Bold.woff2') format('woff2');
-    font-style: normal;
 }
 .start_end{
     font-size: 5px;
     display:inline-block;
     font-family: 'KIMM_Bold';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2212@1.0/KIMM_Bold.woff2') format('woff2');
-    font-style: normal;
 }
 input{
     width: 30vw;
@@ -74,25 +74,17 @@ input{
     margin: 10px;
     background-color:rgb(240, 232, 232);
     font-family: 'KIMM_Bold';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2212@1.0/KIMM_Bold.woff2') format('woff2');
-    font-style: normal;
     overflow:auto;
 }
 
 label{
     font-size: 20px;
     font-family: 'KIMM_Bold';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2212@1.0/KIMM_Bold.woff2') format('woff2');
-    font-weight: 700;
-    font-style: normal;
 }
 
 #board_a{
     color: white;
     font-family: 'KIMM_Bold';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2212@1.0/KIMM_Bold.woff2') format('woff2');
-    font-weight: 700;
-    font-style: normal;
 }
 .a_container:hover{
     background-color: rgb(102, 81, 81);
@@ -106,8 +98,6 @@ label{
     vertical-align: top;
     background-color:rgb(240, 232, 232);
     font-family: 'KIMM_Bold';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2212@1.0/KIMM_Bold.woff2') format('woff2');
-    font-style: normal;
 }
 form{
     width:90%;
@@ -166,11 +156,9 @@ button{
 }
 p{
     font-family: 'KIMM_Bold';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2212@1.0/KIMM_Bold.woff2') format('woff2');
-    font-weight: 700;
-    font-style: normal;
 }
 .p_contents{
+    font-family: 'KIMM_Bold';
     font-size:15px;
     display:inline-block;
     width:800px;
@@ -182,13 +170,9 @@ p{
 , button:hover{
     background-image:url(background1.png);
 }
-
 .table_b{
     width:30px;
     margin:5px;
     color: rgb(100, 75, 75);
     font-family: 'KIMM_Bold';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2212@1.0/KIMM_Bold.woff2') format('woff2');
-    font-weight: 700;
-    font-style: normal;
 }

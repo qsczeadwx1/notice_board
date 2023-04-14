@@ -26,13 +26,10 @@
         ,"offset"   => $offset
     );
     $result_paging = select_board_info_paging( $arr_prepare );
-    // print_r( $result_cnt );
-    // print_r( $result_paging );
+
     // xcopy D:\Students\workspace\게시판\notice_board\src C:\Apache24\htdocs\src /E /H /F /Y
     // 작업중인 파일 서버쪽 폴더로 옮기기
-    // print_r($max_page_num);
 ?>
-
 
 <!DOCTYPE html>
 <html lang="ko">
