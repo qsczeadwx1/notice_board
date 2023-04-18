@@ -101,7 +101,6 @@ function select_board_info_cnt()
     return $result;
 
 }
-var_dump(select_board_info_cnt());
 
 function select_board_info_no( &$param_no )
 {
